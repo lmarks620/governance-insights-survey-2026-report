@@ -554,7 +554,7 @@
     (function() {
       const hasDataLabels = typeof ChartDataLabels !== 'undefined';
       if (hasDataLabels) Chart.register(ChartDataLabels);
-      const dataUrl = 'survey_summary.json';
+      const dataUrl = 'data/survey_summary.json';
       const shortMaturity = (s) => {
         if (!s) return 'Other';
         if (s.startsWith('Advanced')) return 'Advanced';
