@@ -42,17 +42,31 @@
       line-height: 1.6;
       font-size: 1rem;
       font-weight: 500;
+      overflow-x: hidden;
     }
     .wrap { max-width: 920px; margin: 0 auto; padding: 0 1.5rem; }
     .hero {
       background: var(--ob-deep);
       color: #fff;
       padding: 1.75rem 1.5rem 1.5rem;
-      margin: 0 -1.5rem 0;
+      margin-left: calc(-50vw + 50%);
+      margin-right: calc(-50vw + 50%);
+      width: 100vw;
       position: relative;
       overflow: hidden;
     }
-    .hero .wrap { position: relative; z-index: 1; padding: 0 1.5rem; }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -30%;
+      right: -15%;
+      width: 85%;
+      height: 140%;
+      background: radial-gradient(ellipse 70% 60% at 75% 25%, rgba(124, 100, 180, 0.35), rgba(100, 80, 160, 0.12) 50%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .hero .wrap { position: relative; z-index: 1; padding: 0 1.5rem; max-width: 920px; margin: 0 auto; }
     .hero-top {
       display: flex;
       align-items: center;
@@ -228,14 +242,14 @@
           </div>
         </div>
         <nav class="hero-nav">
-          <a href="#background">Research background</a>
-          <a href="#participants">Participant overview</a>
-          <a href="#summary">Executive summary</a>
-          <a href="#findings">Key findings</a>
-          <a href="#distinctions">Key distinctions</a>
-          <a href="#quotes">In their words</a>
-          <a href="#direction">Product direction</a>
-          <a href="#gtm">GTM nuggets</a>
+          <a href="#background">Research Background</a>
+          <a href="#participants">Participant Overview</a>
+          <a href="#summary">Executive Summary</a>
+          <a href="#findings">Key Findings</a>
+          <a href="#distinctions">Key Distinctions</a>
+          <a href="#quotes">In Their Words</a>
+          <a href="#direction">Product Direction</a>
+          <a href="#gtm">GTM Nuggets</a>
           <a href="#appendix">Appendix</a>
         </nav>
       </div>
@@ -243,7 +257,7 @@
 
     <div class="main-content">
     <section id="background">
-      <h2>Research background</h2>
+      <h2>Research Background</h2>
       <p><strong>Purpose</strong></p>
       <ul>
         <li>Support product and GTM with packaged insights on how boards measure and use governance insights today.</li>
@@ -269,7 +283,7 @@
     </section>
 
     <section id="participants">
-      <h2>Participant overview</h2>
+      <h2>Participant Overview</h2>
       <p class="n-label">Which best describes your role in the boardroom? | N=<span id="n-participants">358</span></p>
       <div class="chart-container sm">
         <canvas id="chartRole"></canvas>
@@ -282,7 +296,7 @@
     </section>
 
     <section id="summary">
-      <h2>Executive summary</h2>
+      <h2>Executive Summary</h2>
       <p>Board effectiveness and governance insights maturity are mixed; a majority expect to be in “Developing” or “Advanced” in 12 months. AI interest is strong, with trust and controls as prerequisites.</p>
       <ul>
         <li>Board insights maturity is spread across Developing (33%), Basic (27%), and Advanced (25%). 78% expect to be in Developing or Advanced in 12 months.</li>
@@ -294,9 +308,9 @@
     </section>
 
     <section id="findings">
-      <h2>Key findings</h2>
+      <h2>Key Findings</h2>
 
-      <h3>How boards measure and use governance insights today</h3>
+      <h3>How Boards Measure and Use Governance Insights Today</h3>
       <p class="finding-q">Which statement best describes how your board currently measures and uses governance insights? | N=358</p>
       <div class="chart-container">
         <canvas id="chartMaturity"></canvas>
@@ -305,7 +319,7 @@
         <strong>Insight:</strong> One-third are “Developing” (periodic reviews, insights not always timely or acted on). Product can lean into structured reporting and follow-through to meet this segment.
       </div>
 
-      <h3>Where boards expect to be in 12 months</h3>
+      <h3>Where Boards Expect to Be in 12 Months</h3>
       <p class="finding-q">Looking ahead about 12 months, where do you expect your board to be in its approach to measuring and using governance insights? | N=358</p>
       <div class="chart-container">
         <canvas id="chartFuture"></canvas>
@@ -314,7 +328,7 @@
         <strong>Insight:</strong> 78% expect “Developing” or “Advanced” in 12 months (vs. 60% today). Advanced-maturity boards are more likely to already use or plan for AI—segment by maturity for GTM.
       </div>
 
-      <h3>Interest in AI-generated governance insights</h3>
+      <h3>Interest in AI-Generated Governance Insights</h3>
       <p class="finding-q">How interested would you be in using AI-generated governance insights to support board oversight and decision-making? (1 = Not interested, 5 = Very interested) | N=358</p>
       <div class="chart-container">
         <canvas id="chartAIInterest"></canvas>
@@ -323,7 +337,7 @@
         <strong>Segment callout:</strong> Corporate Secretary/GC and Board Director/Member show the highest share at 4–5. Financial services and Corporate show relatively higher “very interested” (5)—AI messaging may resonate there first.
       </div>
 
-      <h3>Expectation for AI use in the next 12 months</h3>
+      <h3>Expectation for AI Use in the Next 12 Months</h3>
       <p class="finding-q">Within the next 12 months, what level of expectation is there that your board or governance team will use AI to generate governance insights? | N=358</p>
       <div class="chart-container">
         <canvas id="chartAIExpectation"></canvas>
@@ -332,13 +346,13 @@
         <strong>Maturity of AI insights:</strong> Only 8% “Already using AI” today; 33% have moderate expectation. Meeting trust requirements (privacy, audit trail, human review) can capture the “moderate expectation” segment.
       </div>
 
-      <h3>What boards want from AI (trust &amp; controls)</h3>
+      <h3>What Boards Want From AI (Trust &amp; Controls)</h3>
       <p class="finding-q">Which capabilities are important for AI-generated governance insights? …participants allowed to choose more than one | N=358</p>
       <div class="chart-container sm">
         <canvas id="chartAIRequirements"></canvas>
       </div>
 
-      <h3>If AI could help, what would you want it to do first?</h3>
+      <h3>If AI Could Help, What Would You Want It to Do First?</h3>
       <p class="finding-q">Please rank the following options from most urgent to least. (Chart shows first/selected priority per respondent.) | N=358</p>
       <div class="chart-container sm">
         <canvas id="chartAIPriority"></canvas>
@@ -347,7 +361,7 @@
         <strong>Insight:</strong> Top priorities are board skills/succession (60), quality & timeliness of materials (58), and progress on strategy (55). Follow-through and early warning on risks also rank high—aligns with barriers and value themes.
       </div>
 
-      <h3>Ease of accessing insights by governance area</h3>
+      <h3>Ease of Accessing Insights by Governance Area</h3>
       <p class="finding-q">How easy is it to access insights in each of these areas? (% Easy + Very Easy) | N=358</p>
       <div class="chart-container sm">
         <canvas id="chartEase"></canvas>
@@ -356,7 +370,7 @@
         <strong>Insight:</strong> Director engagement, composition, and strategy are the hardest areas (38–40% easy); meetings run and materials are easiest (56–61%). Product can prioritize visibility into engagement and composition for boards that struggle there.
       </div>
 
-      <h3>Barriers to governance insights</h3>
+      <h3>Barriers to Governance Insights</h3>
       <p class="finding-q">What gets in the way of boards having the insights they need? …participants allowed to choose more than one | N=358</p>
       <div class="chart-container">
         <canvas id="chartBarriers"></canvas>
@@ -367,11 +381,11 @@
     </section>
 
     <section id="distinctions">
-      <h2>Key distinctions: insights that go beyond the charts</h2>
+      <h2>Key Distinctions: Insights That Go Beyond the Charts</h2>
       <p class="muted" style="margin-bottom: 1.5rem;">Cross-question analysis and actionable takeaways—so product and GTM can act on them.</p>
 
       <div class="distinction-card">
-        <h4>Maturity predicts AI adoption</h4>
+        <h4>Maturity Predicts AI Adoption</h4>
         <ul>
           <li>Advanced-maturity boards: <strong>21%</strong> already using AI today (vs. 5% Informal, 0% Not sure).</li>
           <li>High expectation (planning/piloting): concentrated in Advanced (9%) and Developing (8%).</li>
@@ -379,7 +393,7 @@
         <p class="takeaway">Takeaway: Segment by maturity—lead with AI for Advanced/Developing; build trust and basics first for Basic/Informal.</p>
       </div>
       <div class="distinction-card">
-        <h4>Role shapes both interest and visibility</h4>
+        <h4>Role Shapes Both Interest and Visibility</h4>
         <ul>
           <li>Corporate Secretary/GC: highest ease—61% Easy+Very Easy on materials, 45% on oversight/risk.</li>
           <li>Executive Directors: lowest on director engagement (28%).</li>
@@ -388,7 +402,7 @@
         <p class="takeaway">Takeaway: Position “ease of access” for Secretaries; “engagement visibility” and AI for EDs and Directors.</p>
       </div>
       <div class="distinction-card">
-        <h4>Industry shifts AI interest</h4>
+        <h4>Industry Shifts AI Interest</h4>
         <ul>
           <li>Financial services and Corporate: higher proportion “very interested” (5) than Nonprofit and Education.</li>
           <li>Nonprofit: largest segment (49%), spread across the interest scale.</li>
@@ -396,7 +410,7 @@
         <p class="takeaway">Takeaway: Prioritize FinServ and Corporate for AI-first messaging; use trust and workflow for Nonprofit.</p>
       </div>
       <div class="distinction-card">
-        <h4>One barrier dominates—build there first</h4>
+        <h4>One Barrier Dominates—Build There First</h4>
         <ul>
           <li><strong>55%</strong> selected “Exists but fragmented/manual” (195 mentions).</li>
           <li>No other barrier exceeds 32%.</li>
@@ -404,7 +418,7 @@
         <p class="takeaway">Takeaway: Lead with consolidation, less manual effort, and “one place” for governance insights.</p>
       </div>
       <div class="distinction-card">
-        <h4>The “moderate expectation” segment is the near-term opportunity</h4>
+        <h4>The “Moderate Expectation” Segment Is the Near-Term Opportunity</h4>
         <ul>
           <li><strong>33%</strong> have moderate expectation (likely within 12 months, no active plan yet).</li>
           <li>vs. 8% already using and 7% high expectation.</li>
@@ -414,7 +428,7 @@
     </section>
 
     <section id="quotes">
-      <h2>Where improved governance insights would create the most value</h2>
+      <h2>Where Improved Governance Insights Would Create the Most Value</h2>
       <p class="muted">In your own words, where do you think improved governance insights would create the most value? Sample responses with role and industry.</p>
       <div id="quotes-container">
         <!-- Filled from survey_summary.json value_quotes (quote, role, industry) -->
@@ -423,7 +437,7 @@
     </section>
 
     <section id="direction">
-      <h2>Product direction: Now / Next / Later</h2>
+      <h2>Product Direction: Now / Next / Later</h2>
       <div class="now-next-later">
         <div class="nnl now">
           <h4>Now</h4>
@@ -441,7 +455,7 @@
     </section>
 
     <section id="gtm">
-      <h2>GTM nuggets &amp; stats</h2>
+      <h2>GTM Nuggets &amp; Stats</h2>
       <p>Clear stats for insight-led GTM when the product team is ready.</p>
       <div class="gtm-nuggets">
         <div class="gtm-nugget"><span class="num">72%</span> of board leaders are somewhat to very interested in AI-generated governance insights.</div>
@@ -454,7 +468,7 @@
 
     <section id="appendix">
       <h2>Appendix</h2>
-      <h3>Cross-tab: Results stratified by board room role</h3>
+      <h3>Cross-Tab: Results Stratified by Board Room Role</h3>
       <p class="muted">Key differences in responses by role. N varies by question.</p>
       <div class="appendix-grid">
         <div class="appendix-card">
@@ -495,7 +509,7 @@
           </ul>
         </div>
       </div>
-      <h3>Cross-tab: Results stratified by industry</h3>
+      <h3>Cross-Tab: Results Stratified by Industry</h3>
       <p class="muted">Nonprofit is largest (49%); Education (17%), Financial services (11%), Healthcare (7%), Corporate (7%). Financial services and Corporate show higher “very interested” (5) in AI.</p>
       <div class="chart-container sm">
         <canvas id="chartIndustry2"></canvas>
