@@ -554,7 +554,7 @@
     (function() {
       const hasDataLabels = typeof ChartDataLabels !== 'undefined';
       if (hasDataLabels) Chart.register(ChartDataLabels);
-      const dataUrl = 'data/survey_summary.json';
+      const dataUrl = 'survey_summary.json';
       const shortMaturity = (s) => {
         if (!s) return 'Other';
         if (s.startsWith('Advanced')) return 'Advanced';
@@ -576,8 +576,13 @@
       const gridColor = 'rgba(32, 21, 71, 0.08)';
       const tickColor = '#4C4084';
 
-      fetch(dataUrl)
-        .then(r => r.json())
+      function loadData() {
+        return fetch('survey_summary.json').then(r => {
+          if (r.ok) return r.json();
+          return fetch('data/survey_summary.json').then(r2 => r2.ok ? r2.json() : Promise.reject(new Error('Data not found')));
+        });
+      }
+      loadData()
         .then(d => {
           const n = d.n;
           document.getElementById('stat-n').textContent = n;
